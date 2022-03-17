@@ -1,5 +1,5 @@
-sort: sort.o bubble.o uni.o insert.o quick.o
-	g++ sort.o bubble.o uni.o insert.o quick.o -o sort
+sort: sort.o bubble.o uni.o insert.o quick.o heapsort.o counting.o
+	g++ sort.o bubble.o uni.o insert.o quick.o heapsort.o counting.o -o sort
 	make clean
 
 bubble.o: dependencies/bubble.c
@@ -13,6 +13,12 @@ insert.o: dependencies/insert.c
 
 quick.o: dependencies/quick.c
 	g++ -c dependencies/quick.c
+
+counting.o: dependencies/counting.c
+	g++ -c dependencies/counting.c
+
+heapsort.o: dependencies/heapsort.c
+	g++ -c dependencies/heapsort.c
 
 sort.o: sort.c
 	g++ -c sort.c
