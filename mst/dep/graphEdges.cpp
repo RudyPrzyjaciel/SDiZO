@@ -21,7 +21,7 @@ void graphEdges::cityWeights(void)
 			//set upper triangle in matrix
 			if (i < j)
 			{
-				edges[i][j] = rand() % 5 + (j - i);
+				edges[i][j] = rand() % 25 + (j - i);
 			}
 			// lowet triangle is ignored in Jarnik-Prim MST
 			//else
@@ -55,8 +55,6 @@ void graphEdges::jarnikPrim(void)
 
 	clock_t startTime, endTime;
 	double cpuTimeUsed;
-	//double cpuTimeUsedAvg;
-
 	startTime = clock();
 
 	int no_edge = 0;
@@ -66,7 +64,10 @@ void graphEdges::jarnikPrim(void)
 	selected[0] = true;
 	int x;
 	int y;
-	std::cout << "Edge" << " : " << "Weight" << std::endl;
+	//if (sizeX <= 10)
+	//{
+		std::cout << "Edge" << " : " << "Weight" << std::endl;
+	//}
 	while (no_edge < this->sizeX - 1)
 	{
 		int min = INT_MAX;
@@ -90,11 +91,27 @@ void graphEdges::jarnikPrim(void)
 				}
 			}
 		}
-		std::cout << x << " to " << y << " : " << this->edges[x][y] << std::endl;
+		//if (sizeX <= 10)
+		//{
+			std::cout << x << " to " << y << " : " << this->edges[x][y] << std::endl;
+		//}
 		selected[y] = true;
 		no_edge++;
 	}
 	endTime = clock();
 	cpuTimeUsed = ((double)(endTime - startTime)) / CLOCKS_PER_SEC;
 	std::cout << "Finished Jarnik-Prim MST algorithm in " << cpuTimeUsed << std::endl;
+}
+
+void graphEdges::kruskal(void)
+{
+	std::cout << "(NOT)starting Kruskal MST algorithm" << std::endl;
+
+	clock_t startTime, endTime;
+	double cpuTimeUsed;
+
+	startTime = clock();
+	endTime = clock();
+	cpuTimeUsed = ((double)(endTime - startTime)) / CLOCKS_PER_SEC;
+	std::cout << "(NOT)Finished Jarnik-Prim MST algorithm in " << cpuTimeUsed << std::endl;
 }

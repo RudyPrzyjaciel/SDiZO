@@ -21,4 +21,5 @@ public:
 	void cityWeights(void);
 	void printWeights(void);
 	void jarnikPrim(void);
+	void kruskal(void);
 };
