@@ -1,8 +1,5 @@
-#include <iostream>
-#include <vector>
 #include "dep/pointInt2.h"
 #include "dep/graphEdges.h"
-
 
 
 int main()
