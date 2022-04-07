@@ -30,5 +30,6 @@ int uni::saveToFile(int* arr, int len,const char* name)
 	}
 	fclose(newFile);
 	printf("Saved data to file \"%s\"\n", name);
+	printf("---------------------\n");
 	return 0;
 }

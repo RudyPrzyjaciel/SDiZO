@@ -11,7 +11,7 @@ void countingSort(int array[], int size)
 			max = array[i];
 	}
 
-	int count[65001]; //must be at least max+1
+	int count[65000]; //must be at least max+1
 
 	for (int i = 0; i <= max; ++i)
 	{

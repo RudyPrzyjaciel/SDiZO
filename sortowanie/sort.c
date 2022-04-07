@@ -1,6 +1,6 @@
 #include "sort.h"
 
-#define count 500
+#define count 500000
 #define iter 10
 
 int main()
@@ -18,96 +18,96 @@ int main()
 	double cpuTimeUsedAvg;
 
 	//BubbleSort
-	{
-		int* toSortBubble = new int[count];
-		cpuTimeUsedAvg = 0;
-		printf("Sorting %d numbers using BubbleSort on average in:\n", count);
-		for (int i = 0; i < iter; i++)
-		{
-			for (size_t cnt = 0; cnt < count; ++cnt)
-			{
-				toSortBubble[cnt] = data[cnt];
-			}
-			startTime = clock();
-			bubble(toSortBubble, count);
-			endTime = clock();
-			cpuTimeUsed = ((double)(endTime - startTime)) / CLOCKS_PER_SEC;
-			//cpuTimeUsedAvg = (cpuTimeUsedAvg + cpuTimeUsed) / (i + 1);
-			cpuTimeUsedAvg = (cpuTimeUsedAvg * i + cpuTimeUsed) / (i + 1);
-		}
-		printf("%f\n", cpuTimeUsedAvg);
-		uni::saveToFile(toSortBubble, count, "bubbleSort.csv");
-		delete[] toSortBubble;
-	}
+	// {
+	// 	int* toSortBubble = new int[count];
+	// 	cpuTimeUsedAvg = 0;
+	// 	printf("Sorting %d numbers using BubbleSort on average in:\n", count);
+	// 	for (int i = 0; i < iter; i++)
+	// 	{
+	// 		for (size_t cnt = 0; cnt < count; ++cnt)
+	// 		{
+	// 			toSortBubble[cnt] = data[cnt];
+	// 		}
+	// 		startTime = clock();
+	// 		bubble(toSortBubble, count);
+	// 		endTime = clock();
+	// 		cpuTimeUsed = ((double)(endTime - startTime)) / CLOCKS_PER_SEC;
+	// 		//cpuTimeUsedAvg = (cpuTimeUsedAvg + cpuTimeUsed) / (i + 1);
+	// 		cpuTimeUsedAvg = (cpuTimeUsedAvg * i + cpuTimeUsed) / (i + 1);
+	// 	}
+	// 	printf("%f\n", cpuTimeUsedAvg);
+	// 	uni::saveToFile(toSortBubble, count, "bubbleSort.csv");
+	// 	delete[] toSortBubble;
+	// }
 
 	//InsertSort
-	{
-		int* toSortInsert = new int[count];
-		cpuTimeUsedAvg = 0;
-		printf("Sorting %d numbers using InsertSort on average in:\n", count);
-		for (int i = 0; i < iter; i++)
-		{
-			for (size_t cnt = 0; cnt < count; ++cnt)
-			{
-				toSortInsert[cnt] = data[cnt];
-			}
-			startTime = clock();
-			insert(toSortInsert, count);
-			endTime = clock();
-			cpuTimeUsed = ((double)(endTime - startTime)) / CLOCKS_PER_SEC;
-			//cpuTimeUsedAvg = (cpuTimeUsedAvg + cpuTimeUsed) / (i + 1);
-			cpuTimeUsedAvg = (cpuTimeUsedAvg * i + cpuTimeUsed) / (i + 1);
-		}
-		printf("%f\n", cpuTimeUsedAvg);
-		uni::saveToFile(toSortInsert, count, "insertSort.csv");
-		delete[] toSortInsert;
-	}
+	// {
+	// 	int* toSortInsert = new int[count];
+	// 	cpuTimeUsedAvg = 0;
+	// 	printf("Sorting %d numbers using InsertSort on average in:\n", count);
+	// 	for (int i = 0; i < iter; i++)
+	// 	{
+	// 		for (size_t cnt = 0; cnt < count; ++cnt)
+	// 		{
+	// 			toSortInsert[cnt] = data[cnt];
+	// 		}
+	// 		startTime = clock();
+	// 		insert(toSortInsert, count);
+	// 		endTime = clock();
+	// 		cpuTimeUsed = ((double)(endTime - startTime)) / CLOCKS_PER_SEC;
+	// 		//cpuTimeUsedAvg = (cpuTimeUsedAvg + cpuTimeUsed) / (i + 1);
+	// 		cpuTimeUsedAvg = (cpuTimeUsedAvg * i + cpuTimeUsed) / (i + 1);
+	// 	}
+	// 	printf("%f\n", cpuTimeUsedAvg);
+	// 	uni::saveToFile(toSortInsert, count, "insertSort.csv");
+	// 	delete[] toSortInsert;
+	// }
 
 	//QuickSort
-	{
-		int* toSortQuick = new int[count];
-		cpuTimeUsedAvg = 0;
-		printf("Sorting %d numbers using quickSort on average in:\n", count);
-		for (int i = 0; i < iter; i++)
-		{
-			for (size_t cnt = 0; cnt < count; ++cnt)
-			{
-				toSortQuick[cnt] = data[cnt];
-			}
-			startTime = clock();
-			quickSort(toSortQuick, 0, count);
-			endTime = clock();
-			cpuTimeUsed = ((double)(endTime - startTime)) / CLOCKS_PER_SEC;
-			//cpuTimeUsedAvg = (cpuTimeUsedAvg + cpuTimeUsed) / (i+1);
-			cpuTimeUsedAvg = (cpuTimeUsedAvg * i + cpuTimeUsed) / (i + 1);
-		}
-		printf("%f\n", cpuTimeUsedAvg);
-		uni::saveToFile(toSortQuick, count, "quickSort.csv");
-		delete[] toSortQuick;
-	}
+	// {
+	// 	int* toSortQuick = new int[count];
+	// 	cpuTimeUsedAvg = 0;
+	// 	printf("Sorting %d numbers using quickSort on average in:\n", count);
+	// 	for (int i = 0; i < iter; i++)
+	// 	{
+	// 		for (size_t cnt = 0; cnt < count; ++cnt)
+	// 		{
+	// 			toSortQuick[cnt] = data[cnt];
+	// 		}
+	// 		startTime = clock();
+	// 		quickSort(toSortQuick, 0, count);
+	// 		endTime = clock();
+	// 		cpuTimeUsed = ((double)(endTime - startTime)) / CLOCKS_PER_SEC;
+	// 		//cpuTimeUsedAvg = (cpuTimeUsedAvg + cpuTimeUsed) / (i+1);
+	// 		cpuTimeUsedAvg = (cpuTimeUsedAvg * i + cpuTimeUsed) / (i + 1);
+	// 	}
+	// 	printf("%f\n", cpuTimeUsedAvg);
+	// 	uni::saveToFile(toSortQuick, count, "quickSort.csv");
+	// 	delete[] toSortQuick;
+	// }
 
 	//CountingSort
-	{
-		int* toSortCount = new int[count];
-		cpuTimeUsedAvg = 0;
-		printf("Sorting %d numbers using countingSort on average in:\n", count);
-		for (int i = 0; i < iter; i++)
-		{
-			for (size_t cnt = 0; cnt < count; ++cnt)
-			{
-				toSortCount[cnt] = data[cnt];
-			}
-			startTime = clock();
-			countingSort(toSortCount, count);
-			endTime = clock();
-			cpuTimeUsed = ((double)(endTime - startTime)) / CLOCKS_PER_SEC;
-			//cpuTimeUsedAvg = (cpuTimeUsedAvg + cpuTimeUsed) / (i+1);
-			cpuTimeUsedAvg = (cpuTimeUsedAvg * i + cpuTimeUsed) / (i + 1);
-		}
-		printf("%f\n", cpuTimeUsedAvg);
-		uni::saveToFile(toSortCount, count, "countSort.csv");
-		delete[] toSortCount;
-	}
+	// {
+	// 	int* toSortCount = new int[count];
+	// 	cpuTimeUsedAvg = 0;
+	// 	printf("Sorting %d numbers using countingSort on average in:\n", count);
+	// 	for (int i = 0; i < iter; i++)
+	// 	{
+	// 		for (size_t cnt = 0; cnt < count; ++cnt)
+	// 		{
+	// 			toSortCount[cnt] = data[cnt];
+	// 		}
+	// 		startTime = clock();
+	// 		countingSort(toSortCount, count);
+	// 		endTime = clock();
+	// 		cpuTimeUsed = ((double)(endTime - startTime)) / CLOCKS_PER_SEC;
+	// 		//cpuTimeUsedAvg = (cpuTimeUsedAvg + cpuTimeUsed) / (i+1);
+	// 		cpuTimeUsedAvg = (cpuTimeUsedAvg * i + cpuTimeUsed) / (i + 1);
+	// 	}
+	// 	printf("%f\n", cpuTimeUsedAvg);
+	// 	uni::saveToFile(toSortCount, count, "countSort.csv");
+	// 	delete[] toSortCount;
+	// }
 
 	//HeapSort
 	{
