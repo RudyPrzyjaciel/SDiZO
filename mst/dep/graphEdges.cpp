@@ -1,6 +1,5 @@
 #include "graphEdges.h"
 
-
 graphEdges::graphEdges(int x, pointInt2 s) : sizeX(x), sizeY(x), start(s)
 {
 	edges = std::vector< std::vector<int> >(sizeX, std::vector<int>(sizeY, 0));
@@ -22,12 +21,9 @@ void graphEdges::cityWeights(void)
 			if (i < j)
 			{
 				edges[i][j] = rand() % 25 + (j - i);
+				// edges[i][j] = (j - i);
+				edges[j][i] = edges[i][j];
 			}
-			// lowet triangle is ignored in Jarnik-Prim MST
-			//else
-			//{
-			//	edges[i][j] = i - j;
-			//}
 		}
 	}
 }
@@ -64,10 +60,10 @@ void graphEdges::jarnikPrim(void)
 	selected[0] = true;
 	int x;
 	int y;
-	//if (sizeX <= 10)
-	//{
+	if (sizeX <= 10)
+	{
 		std::cout << "Edge" << " : " << "Weight" << std::endl;
-	//}
+	}
 	while (no_edge < this->sizeX - 1)
 	{
 		int min = INT_MAX;
@@ -91,10 +87,10 @@ void graphEdges::jarnikPrim(void)
 				}
 			}
 		}
-		//if (sizeX <= 10)
-		//{
+		if (sizeX <= 10)
+		{
 			std::cout << x << " to " << y << " : " << this->edges[x][y] << std::endl;
-		//}
+		}
 		selected[y] = true;
 		no_edge++;
 	}
@@ -114,4 +110,53 @@ void graphEdges::kruskal(void)
 	endTime = clock();
 	cpuTimeUsed = ((double)(endTime - startTime)) / CLOCKS_PER_SEC;
 	std::cout << "(NOT)Finished Jarnik-Prim MST algorithm in " << cpuTimeUsed << std::endl;
+}
+
+
+void graphEdges::saveEdges(void)
+{
+	std::ofstream file;
+	file.open("edges.txt");
+	for (int i = 0; i < sizeX; i++)
+	{
+		for (int j = 0; j < sizeY - 1; j++)
+		{
+			file << edges[i][j] << ",";
+		}
+		file << edges[i][sizeY-1];
+		if(i != sizeX-1)
+		{
+			file << ",\n";
+		}
+	}
+	file.close();
+}
+
+void graphEdges::loadEdges(void)
+{
+	int i = 0;
+	int j = 0;
+	std::ifstream file;
+	std::string line;
+	std::string value;
+	file.open("edges.txt");
+	if(file.is_open())
+	{
+		while(getline(file, line))
+		{
+			if (!(j < sizeX)) break;
+			i = 0;
+			while(i < sizeX)
+			{
+				std::size_t index = line.find_first_of(",");
+				value = line.substr(0, index);
+				line.erase(0, index+1);
+				line.shrink_to_fit();
+				edges[i][j] = stoi(value);
+				i++;
+			}
+			j++;
+		}
+	}
+	file.close();
 }

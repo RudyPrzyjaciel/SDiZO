@@ -5,6 +5,7 @@
 #include <climits>
 #include <cstring>
 #include <time.h>
+#include <fstream>
 #include "pointInt2.h"
 
 class graphEdges
@@ -22,4 +23,6 @@ public:
 	void printWeights(void);
 	void jarnikPrim(void);
 	void kruskal(void);
+	void saveEdges(void);
+	void loadEdges(void);
 };
