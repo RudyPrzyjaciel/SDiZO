@@ -1,4 +1,4 @@
-// Dijkstra's Algorithm in C++
+// modified code from https://www.programiz.com/dsa/dijkstra-algorithm
 
 #include <iostream>
 #include <vector>
@@ -12,7 +12,7 @@ using namespace std;
 void RunDijkstra(const int& sizeNodes);
 
 int main() {
-    const int nodesCount = 100; //number of nodes to read from file, max 1k!
+    const int nodesCount = 25; //number of nodes to read from file, max 1k!
     RunDijkstra(nodesCount);
     return 0;
 }
@@ -110,18 +110,8 @@ void RunDijkstra(const int& sizeNodes) {
         }
     }
     file.close();
-    //print edge matrix (DEBUG)
-    //for (int i = 0; i < sizeNodes; i++)
-    //{
-    //    for (int j = 0; j < sizeNodes; j++)
-    //    {
-    //        std::cout << edges[i][j] << " ";
-    //    }
-    //    std::cout << std::endl;
-    //}
 
-   
-    // assign values from matrix to correct edges
+
     int n = 0;
     for (int i = 0; i < sizeNodes; ++i)
     {
@@ -158,7 +148,6 @@ void RunDijkstra(const int& sizeNodes) {
     delete[] testNodes;
 }
 
-///////////////////
 
 void Dijkstras() {
     std::cout << "DEBUG: nodes.size = " << nodes.size() << std::endl;
@@ -245,7 +234,6 @@ bool Contains(vector<Node*>& nodes, Node* node) {
     return false;
 }
 
-///////////////////
 
 void PrintShortestRouteTo(Node* destination) {
     Node* previous = destination;
